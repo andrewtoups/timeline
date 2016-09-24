@@ -1,0 +1,113 @@
+.textbox {
+  color: white;
+  position: relative;
+  width: 100%;
+  padding: 24px;
+  background: #6cbfee;
+  border-radius: 5px;
+  margin: 0 0 40px 0;
+
+
+  .triangle {
+
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent $blue transparent transparent;
+    position: absolute;
+    left: -8px;
+    top: 10px;
+
+    @include tablet {
+      left: -4px;
+    }
+  }
+
+  .line {
+    position: absolute;
+    left: -8.5%;
+    top: 0;
+    height:200%;
+    width:10px;
+    border-radius: 5px;
+    background: $lightblue;
+
+    @include tablet {
+      left: -30px;
+    }
+
+    @include mobile {
+        position: static;
+        left: 0;
+        top: 0;
+        height: 10px;
+        width: 100%;
+        border-radius: 5px;
+        transition: all .2s ease;
+    }
+
+    .bubble {
+      height: 40px;
+      width: 40px;
+      background: $darkblue;
+      border: solid thick $lightblue;
+      border-radius: 50%;
+      position: relative;
+      left: 50%;
+      top: 0;
+      transform-origin:center;
+      transform: translate(-50%);
+
+      @include mobile {
+        left: 30px;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: all .2s ease;
+      }
+
+      .icon {
+        padding: 22% 0;
+        text-align: center;
+        }
+      }
+
+    .date, .time {
+      position: absolute;
+      font-family: monospace;
+    }
+
+    .date {
+      color: $faint;
+      font-size: 8px;
+      top: 3px;
+      left: -65px;
+
+      @include mobile {
+        font-size: 20px;
+        top: -20px;
+        left: 5%;
+       }
+
+    }
+
+    .time {
+      color: $blue;
+      font-size: 30px;
+      top: 15px;
+      left: -108px;
+
+      @include tablet {
+        top: 40px;
+        left: -90px;
+      }
+
+      @include mobile {
+        color:$darkblue;
+        font-size: 24px;
+        top: 0px;
+        left: 95px;
+      }
+    }
+  }
+}

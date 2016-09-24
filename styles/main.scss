@@ -1,5 +1,8 @@
 @import "partials/reset";
 @import "partials/variables";
+@import "partials/mixins";
+@import "partials/textbox";
+@import "partials/content";
 
 // VERTICAL LINE
 
@@ -9,107 +12,45 @@ body {
   padding-top: 100px;
 }
 
-.entry {
-  height: 290px;
-  min-height: 162px;
-}
+.timeline {
 
-.timeline{
-  // float:left;
-  :nth-child(2n) .textbox {
+  @include desktop {
+  margin: 0 20% 0 25%;
+  }
+
+  @include tablet {
+    margin: 0 1% 0 125px;
+  }
+
+  @include mobile {
+    margin: 0 0% 0 0%;
+    transition: all .2s ease;
+
+  }
+
+  :nth-child(2n) .textbox { //every other box color dark blue
     background: $darkblue;
   }
-  :nth-child(2n) .triangle {
+  :nth-child(2n) .triangle { // every other triangle darkblue
     border-color: transparent $darkblue transparent transparent;
   }
-  :nth-child(2n) .line .time {
+  :nth-child(2n) .line .time { // every other timestamp darkblue
     color: $darkblue;
   }
-}
 
-.textbox{
-  color: white;
-  position: absolute;
-  right: 20%;
-  width: 40%;
-  padding:24px;
-  background: $blue;
-  border-radius: 5px;
-
-
-  .triangle {
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 10px 10px 10px 0;
-    border-color: transparent $blue transparent transparent;
-    position: absolute;
-    left: -10px;
-    top: 10px;
+  :last-child  .textbox .line { // very last line ends with text
+    height: 100%;
   }
 
-  .line {
-    position: absolute;
-    left: -15%;
-    top: 0;
-    height:120%;
-    width:10px;
-    border-radius: 5px;
-    background: $lightblue;
-    .bubble {
-      height: 40px;
-      width: 40px;
-      background: $darkblue;
-      border: solid thick $lightblue;
-      border-radius: 50%;
-      position: relative;
-      left: 50%;
-      top: 0;
-      transform-origin:center;
-      transform: translate(-50%);
-
-      .icon {
-        padding: 22% 0;
-        text-align: center;
-        }
-      }
-
-    .date, .time {
-      position: absolute;
-      font-family: monospace;
-    }
-
-    .date {
-      color: $faint;
-      font-size: 8px;
-      top: 3px;
-      left: -65px;
-    }
-
-    .time {
+  @include mobile {
+    :nth-child(2n) .line .time {
       color: $blue;
-      font-size: 30px;
-      top: 15px;
-      left: -108px;
+    }
+
+    :last-child .textbox .line {
+      height: 10px;
+      transition: all .2s ease;
     }
   }
 
-  section {
-    padding: 20px 0;
-  }
-
-  .headline {
-    border-bottom: solid 1px $lightblue;
-    h1 {
-      font-size: 20px;
-      font-weight: bold;
-      }
-    }
-
-  .paragraph {
-      p {
-        font-size: 14px;
-        font-weight: lighter;
-      }
-    }
-  }
+}
